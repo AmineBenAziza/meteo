@@ -6,10 +6,4 @@ class HomeController < ApplicationController
     @temp = params[:temp]
     @city = params[:city]
   end
-
-  def my_weather
-    @date = params[:dt]
-    @city = params[:city]
-    @temp = params[:temp]
-  end
 end

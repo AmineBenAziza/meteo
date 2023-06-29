@@ -1,14 +1,16 @@
 <div class="container">
   <div class="row" style="text-align:center;">
-    <h1 class="text-justify">Welcome to home page</h1>
+    <h1 class="h3 mb-3 font-weight-normal">my City weather</h1>
   </div>
+
   <div class="form-div">
-    <%= form_with url: "/weather/search", class:"form-inline" do |form| %>
-      <%= form.select :city_id, options_for_select(City.all.pluck(:name, :id)), {}, {class:"form-select"}%>
-      <%= form.submit "weather", class:"btn btn-primary my-1"%>
+    <%= form_with url: "/weather/search", class:"form_signin" do |form| %>
+      <%= form.hidden_field :city_id, value: current_user.city_id %>
+      <%= form.date_field :date, class:"form-control", min: Date.current.tomorrow, max: (Date.current + 4.days) %>
+      <%= form.submit "weather", class:"btn btn-primary my-1 " %>
     <% end %>
   </div>
-  <% if @temp %>
+  <% if @temp && @date && @city %>
     <section class="vh-100">
       <div class="container py-5">
         <div class="row d-flex justify-content-center align-items-center h-100">
@@ -18,7 +20,7 @@
               <div class="card-header p-4 border-0">
                 <div class="text-center mb-3">
                   <p class="h2 mb-1" id="wrapper-name"><%=@city%></p>
-                  <p class="mb-1" id="wrapper-description">Tomorrow</p>
+                  <p class="mb-1" id="wrapper-description"><%=@date%></p>
                   <p class="display-1 mb-1" id="wrapper-temp"><%=@temp%>°C</p>
                 </div>
               </div>
@@ -28,4 +30,4 @@
       </div>
     </section>
   <% end %>
-</div>
+<div>
