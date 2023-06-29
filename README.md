@@ -19,3 +19,5 @@ curl --location --request POST 'http://127.0.0.1:3000/users/tokens/sign_up' \
     "password": "123456"
 }'
 ```
+
+do not forget rails db:seed to create cities

@@ -1,11 +1,8 @@
 Rails.application.routes.draw do
+  root to: 'home#index'
+
   post 'weather/search'
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  get 'weather/my_weather'
 
-  # Defines the root path route ("/")
-  # root "articles#index"
-  root to: "home#index"
-  get 'home/my_weather'
   devise_for :users
-
 end
