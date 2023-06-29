@@ -1,17 +1,19 @@
 <%= render "layouts/navbar"%>
 <div class="container">
   <div class="row" style="text-align:center;">
-    <h1 class="text-justify">Welcome to home page</h1>
+    <h1 class="text-justify">my City weather</h1>
+    <h4 class="text-justify">please select a date</h4>
   </div>
   <div class="row">
     <div class="col">
     </div>
-    <div class="col">
+    <div class="col" style="text-align:center;">
       <%= form_with url: "/weather/search", class:"form-inline" do |form| %>
         <%= form.hidden_field :city_id, value: current_user.city_id %>
         <%= form.date_field :date, min: Date.current.tomorrow, max: (Date.current + 4.days) %>
         <%= form.submit "weather", class:"btn btn-primary my-1"%>
       <% end %>
+    </div>
     <div class="col">
     </div>
   </div>
