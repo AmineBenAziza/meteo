@@ -1,4 +1,3 @@
-
 <%= render "layouts/navbar"%>
 <div class="container">
   <div class="row" style="text-align:center;">
@@ -9,19 +8,18 @@
     </div>
     <div class="col">
       <%= form_with url: "/weather/search", class:"form-inline" do |form| %>
-        <%= form.select :city_id, options_for_select(City.all.pluck(:name, :id)), {}, {class:"form-select"}%>
+        <%= form.hidden_field :city_id, value: current_user.city_id %>
+        <%= form.date_field :date, min: Date.current.tomorrow, max: (Date.current + 4.days) %>
         <%= form.submit "weather", class:"btn btn-primary my-1"%>
       <% end %>
-    </div>
     <div class="col">
     </div>
   </div>
   <div class="row">
-    <% if @temp%>
-      <h1> TOMORROW </h1>
+    <% if @temp && @date %>
+      <h1> <%=@date%> </h1>
       <h1> <%=@city%> </h1>
       <h1> <%=@temp%> </h1>
     <% end %>
   </div>
 </div>
-
