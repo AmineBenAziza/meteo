@@ -1,3 +1,3 @@
 $client = OpenWeather::Client.new(
-  api_key: "bd5e378503939ddaee76f12ad7a97608"
+  api_key: Rails.application.credentials.open_weather_map_key
 )

@@ -46,6 +46,7 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 gem "bootsnap", require: false
 gem 'devise', '~> 4.9', '>= 4.9.2'
 gem 'open-weather-ruby-client'
+gem 'devise-api', github: 'nejdetkadir/devise-api', branch: 'main'
 
 # Use Sass to process CSS
 # gem "sassc-rails"
