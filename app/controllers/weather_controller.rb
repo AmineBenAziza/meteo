@@ -1,6 +1,6 @@
 class WeatherController < ApplicationController
   def search
-    if params[:city_id]
+    if params[:city_id].present?
       city = City.find(params[:city_id])
       dt = params[:date].present? ? params[:date] : Time.current.tomorrow
       data = $client.current_weather(city: city.name, dt: dt)
@@ -11,7 +11,8 @@ class WeatherController < ApplicationController
         redirect_to root_path(temp: @temp, city: city.name )
       end
     else
-      flash['error'] = 'city dos not exist'
+      redirect_to home_my_weather_path
+      flash[:alert] = "add city on your profile first"
     end
   end
 end
