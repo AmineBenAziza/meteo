@@ -1,9 +1,25 @@
 
-<h1>Welcome to home page</h1>
-<div class="form-inline my-2 my-lg-0">
-    <%= button_to(
-        "Log Out",
-        destroy_user_session_path,
-        method: :delete
-    ) %>
+<%= render "layouts/navbar"%>
+<div class="container">
+  <div class="row" style="text-align:center;">
+    <h1 class="text-justify">Welcome to home page</h1>
+  </div>
+  <div class="row">
+    <div class="col">
+    </div>
+    <div class="col">
+      <%= form_with url: "/weather/search", class:"form-inline" do |form| %>
+        <%= form.select :city_id, options_for_select(City.all.pluck(:name, :id)), {}, {class:"form-select"}%>
+        <%= form.submit "weather", class:"btn btn-primary my-1"%>
+      <% end %>
+    </div>
+    <div class="col">
+    </div>
+  </div>
+  <div class="row">
+    <% if @temp%>
+      <h1> <%=@temp%> </h1>
+    <% end %>
+  </div>
 </div>
+

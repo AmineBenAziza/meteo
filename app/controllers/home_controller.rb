@@ -1,5 +1,7 @@
 class HomeController < ApplicationController
-    def index
-        redirect_to new_user_session_path unless user_signed_in?
-    end
+  def index
+    redirect_to new_user_session_path unless user_signed_in?
+    @cities = City.all
+    @temp = params[:temp]
+  end
 end
