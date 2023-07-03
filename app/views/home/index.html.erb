@@ -5,7 +5,7 @@
   <div class="form-div">
     <%= form_with url: "/weather/search", class:"form-inline" do |form| %>
       <%= form.select :city_id, options_for_select(City.all.pluck(:name, :id)), {}, {class:"form-select"}%>
-      <%= form.submit "weather", class:"btn btn-primary my-1"%>
+      <%= form.submit "Weather", class:"btn btn-primary my-1"%>
     <% end %>
   </div>
   <% if @temp %>
